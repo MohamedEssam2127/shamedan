@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamedan/Features/home/widgets/firstSection.dart';
 import 'package:shamedan/Features/home/widgets/second_section.dart';
+import 'package:shamedan/Features/home/widgets/thirdSection.dart';
 import 'package:shamedan/core/utils/app_color.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: const [
               Firstsection(),
               SecondSection(),
+              ThirdSection()
             ],
           ),
         ),
