@@ -42,4 +42,10 @@ class AppFonts {
     fontWeight: FontWeight.w400,
     fontSize: 20,
   );
+
+  static TextStyle titleLemonada = TextStyle(
+    fontFamily: lemonada,
+    fontWeight: FontWeight.w400,
+    fontSize: 20,
+  );
 }

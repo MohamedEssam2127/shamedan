@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamedan/core/utils/Appfonts.dart';
 import 'package:shamedan/core/utils/app_color.dart';
+import 'package:shamedan/core/widgets/primarybutton.dart';
 
 class ThirdSection extends StatefulWidget {
   const ThirdSection({super.key});
@@ -35,7 +36,7 @@ class _ThirdSectionState extends State<ThirdSection> {
                 SizedBox(width: 12),
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         "عملنا بسكوت سادة لوقت العصاري",
@@ -51,6 +52,9 @@ class _ThirdSectionState extends State<ThirdSection> {
                         overflow: TextOverflow.ellipsis,
                         textDirection: TextDirection.rtl,
                       ),
+                      SizedBox(height: 26) ,
+                      PrimaryButton() ,
+                      SizedBox(height: 26)
                     ],
                   ),
                 ),
