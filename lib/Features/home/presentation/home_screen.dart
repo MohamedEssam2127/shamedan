@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shamedan/Features/home/widgets/FifthSection.dart';
 import 'package:shamedan/Features/home/widgets/FourthSection.dart';
 import 'package:shamedan/Features/home/widgets/firstSection.dart';
 import 'package:shamedan/Features/home/widgets/second_section.dart';
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SecondSection(),
               ThirdSection(),
               FourthSection(),
+              FifthSection(),
             ],
           ),
         ),

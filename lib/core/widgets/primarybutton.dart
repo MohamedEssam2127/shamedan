@@ -4,7 +4,14 @@ import 'package:shamedan/core/utils/app_color.dart';
 
 
 class PrimaryButton extends StatefulWidget {
-  const PrimaryButton({super.key});
+  final String text;
+  final VoidCallback? onPressed;
+
+  const PrimaryButton({
+    super.key,
+    this.text = 'اعرف اكتر عن بسكاوي',
+    this.onPressed,
+  });
 
   @override
   State<PrimaryButton> createState() => _PrimaryButtonState();
@@ -13,12 +20,12 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   @override
   Widget build(BuildContext context) {
-    return  OutlinedButton(
-      onPressed: () {},
+    return OutlinedButton(
+      onPressed: widget.onPressed ?? () {},
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.white,
         foregroundColor: AppColor.backgroundBlack,
-        side:  BorderSide(
+        side: const BorderSide(
           color: Colors.black,
           width: 1.0,
         ),
@@ -32,7 +39,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         elevation: 0,
       ),
       child: Text(
-        'اعرف اكتر عن بسكاوي',
+        widget.text,
         style: AppFonts.regularCairo.copyWith(
           fontSize: 13,
           color: AppColor.backgroundBlack,
