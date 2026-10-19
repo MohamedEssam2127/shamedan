@@ -5,6 +5,7 @@ import 'package:shamedan/Features/home/widgets/firstSection.dart';
 import 'package:shamedan/Features/home/widgets/second_section.dart';
 import 'package:shamedan/Features/home/widgets/thirdSection.dart';
 import 'package:shamedan/core/utils/app_color.dart';
+import 'package:shamedan/core/widgets/customAppBar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,16 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: AppColor.backGroundColor,
-      appBar: AppBar(
-        backgroundColor: AppColor.white,
-        elevation: 0,
-        centerTitle: true,
-        title: Image.asset(
-          'assets/images/logo 1.png',
-          height: 50,
-          fit: BoxFit.contain,
-        ),
-      ),
+      appBar: const CustomAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
