@@ -24,32 +24,32 @@
       "cardTextColor": "#1A1A1A",
       "footerColor": "#FAF6EF",
       "footerTextColor": "#2A2A2A",
-      "timelineTitle": "خطوات الصنع",
-      "timelineSubtitle": "رحلة من أجود حبوب الكاكاو إلى يديك",
+      "timelineTitle": "مكونات عمدة",
+      "timelineSubtitle": "مع ان عمدة واحد بس",
       "timelineSteps": [
         {
-          "title": "كاكاو ممتاز",
-          "subtitle": "أجود حبوب الكاكاو",
+          "title": "كاكاو من مزارعنا",
+          "subtitle": "",
           "icon": "assets/images/icon_cacao_pod.png"
         },
         {
-          "title": "تحميص مثالي",
-          "subtitle": "تحميص بدرجة دقيقة",
+          "title": "نتأكد من جودته",
+          "subtitle": "",
           "icon": "assets/images/icon_cocoa_bean.png"
         },
         {
-          "title": "طحن الحبوب",
-          "subtitle": "قوام ناعم ومثالي",
+          "title": "نطحنه كويس",
+          "subtitle": "",
           "icon": "assets/images/icon_cacao_powder_plate.png"
         },
         {
-          "title": "خلط الشوكولاتة",
-          "subtitle": "مع الحليب الفاخر",
+          "title": "ونعبيه ونمزجه بالحليب",
+          "subtitle": "",
           "icon": "assets/images/icon_cocoa_jar.png"
         },
         {
-          "title": "ويفر مقرمش",
-          "subtitle": "مغطى بالشوكولاتة",
+          "title": "ونعمل منه عمدة",
+          "subtitle": "",
           "icon": "assets/images/icon_chocolate_bar.png"
         }
       ],
