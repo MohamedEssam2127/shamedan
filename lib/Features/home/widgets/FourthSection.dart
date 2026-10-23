@@ -12,24 +12,28 @@ class FourthSection extends StatelessWidget {
       description: 'عمدة ده الكل في الكل هنا وكلمته بتمشي علي الكل بس طيب وطعمه هيعجبك ',
       headerColor: AppColor.secondarylight,
       imagePath: 'assets/images/omda.png',
+      itemId: '1',
     ),
     CharacterCardModel(
       title: 'كتاكيتو',
       description: 'انت اكيد سمعت عن كتاكيتو قبل كده ده اطيب فينا واحد وقلبه طيب وهش من جوه',
       headerColor: AppColor.primarylight,
       imagePath: 'assets/images/Kitkito.png',
+      itemId: '4',
     ),
     CharacterCardModel(
       title: 'بسكاوي',
       description: 'ده اكبر واحد فينا وليه احترامه كفايا انه بيعرف يظبط الشاي ',
       headerColor: AppColor.accentTale,
       imagePath: 'assets/images/beskawy.png',
+      itemId: '2',
     ),
     CharacterCardModel(
       title: 'كوكيز',
       description: 'خلي بالك من كوكيز هو يبان كوكي عادي بس هو مش سهل خااالص',
       headerColor: AppColor.backgroundBlack,
       imagePath: 'assets/images/Cookies.png',
+      itemId: '3',
     ),
   ];
 
@@ -102,6 +106,7 @@ class FourthSection extends StatelessWidget {
                       description: item.description,
                       headerColor: item.headerColor,
                       imagePath: item.imagePath,
+                      itemId: item.itemId,
                     );
                   },
                 ),

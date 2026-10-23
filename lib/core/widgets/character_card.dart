@@ -8,12 +8,14 @@ class CharacterCardModel {
   final String description;
   final Color headerColor;
   final String? imagePath;
+  final String? itemId;
 
   const CharacterCardModel({
     required this.title,
     required this.description,
     required this.headerColor,
     this.imagePath,
+    this.itemId,
   });
 }
 
@@ -22,6 +24,7 @@ class CharacterCard extends StatelessWidget {
   final String description;
   final Color headerColor;
   final String? imagePath;
+  final String? itemId;
   final Widget? headerChild;
   final VoidCallback? onTap;
 
@@ -31,6 +34,7 @@ class CharacterCard extends StatelessWidget {
     required this.description,
     required this.headerColor,
     this.imagePath,
+    this.itemId,
     this.headerChild,
     this.onTap,
   });
@@ -39,7 +43,7 @@ class CharacterCard extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const ItemScreen(),
+        builder: (context) => ItemScreen(itemId: itemId ?? '1'),
       ),
     );
   }
