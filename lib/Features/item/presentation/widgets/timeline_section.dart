@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamedan/Features/item/data/item_model.dart';
 import 'package:shamedan/core/utils/Appfonts.dart';
+import 'package:shamedan/core/utils/app_color.dart';
 
 class TimelineSection extends StatelessWidget {
   final ItemModel item;
@@ -12,220 +13,241 @@ class TimelineSection extends StatelessWidget {
     required this.waveColor,
   });
 
+  Color _getHeavyColor(ItemModel item, Color waveColor) {
+    if (item.id == '1') {
+      return AppColor.secondaryHeavy;
+    }
+    return waveColor;
+  }
+
+  Color _getCircleColor(ItemModel item) {
+    if (item.id == '1') {
+      return AppColor.secondarylight;
+    }
+    try {
+      return Color(int.parse(item.themeColor.replaceFirst('#', '0xFF')));
+    } catch (_) {
+      return const Color(0xFFA42B20);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (item.timelineSteps.isEmpty) return const SizedBox.shrink();
 
-    final badgeColor = item.id == '1'
-        ? const Color(0xFF88241D)
-        : waveColor.withValues(alpha: 0.85);
+    final heavyColor = _getHeavyColor(item, waveColor);
+    final circleColor = _getCircleColor(item);
 
-    return Column(
-      children: [
-        // Title & Subtitle aligned to the right in RTL (above the circular badges)
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final centerX = constraints.maxWidth / 2;
+
+        return Stack(
+          children: [
+            // Background shape (Secondary/heavy with curve at top-left)
+            Positioned.fill(
+              child: CustomPaint(
+                painter: _TimelineBackgroundPainter(heavyColor: heavyColor),
+              ),
+            ),
+
+            // Continuous vertical white line in the exact middle
+            Positioned(
+              left: centerX - 1.25,
+              top: 50,
+              bottom: 40,
+              child: Container(
+                width: 2.5,
+                color: Colors.white,
+              ),
+            ),
+
+            // Content: Title area + Step rows
+            Column(
               children: [
-                Text(
-                  item.timelineTitle,
-                  textAlign: TextAlign.right,
-                  style: AppFonts.titleLalezar.copyWith(
-                    fontSize: 22,
-                    color: Colors.white,
+                // Title and Subtitle aligned to the right (above images)
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 24,
+                    right: 28,
+                    left: 28,
+                    bottom: 20,
                   ),
-                ),
-                if (item.timelineSubtitle.isNotEmpty) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    item.timelineSubtitle,
-                    textAlign: TextAlign.right,
-                    style: AppFonts.regularCairo.copyWith(
-                      fontSize: 12.5,
-                      color: Colors.white.withValues(alpha: 0.85),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          item.timelineTitle,
+                          textAlign: TextAlign.right,
+                          style: AppFonts.titleLemonada.copyWith(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        if (item.timelineSubtitle.isNotEmpty) ...[
+                          const SizedBox(height: 6),
+                          Text(
+                            item.timelineSubtitle,
+                            textAlign: TextAlign.right,
+                            style: AppFonts.regularLemonade.copyWith(
+                              fontSize: 13.5,
+                              color: Colors.white.withValues(alpha: 0.9),
+                            ),
+                          ),
+                        ],
+                      ],
                     ),
                   ),
-                ],
+                ),
+
+                // Step rows
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 24),
+                  child: Column(
+                    children: List.generate(item.timelineSteps.length, (index) {
+                      final step = item.timelineSteps[index];
+                      return _TimelineStepRow(
+                        step: step,
+                        circleColor: circleColor,
+                      );
+                    }),
+                  ),
+                ),
               ],
             ),
-          ),
-        ),
-        const SizedBox(height: 20),
-
-        // Timeline steps with background wave
-        SizedBox(
-          width: double.infinity,
-          child: Stack(
-            children: [
-              // Wave shadow along the top-left side
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: _TimelineWavePainter(waveColor: waveColor),
-                ),
-              ),
-
-              // Timeline step items
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 20),
-                child: Column(
-                  children: List.generate(item.timelineSteps.length, (index) {
-                    final step = item.timelineSteps[index];
-                    final isFirst = index == 0;
-                    final isLast = index == item.timelineSteps.length - 1;
-
-                    return _TimelineStepRow(
-                      step: step,
-                      isFirst: isFirst,
-                      isLast: isLast,
-                      badgeColor: badgeColor,
-                    );
-                  }),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }
 
+// ── Each timeline step row ─────────────────────────────────────
 class _TimelineStepRow extends StatelessWidget {
   final TimelineStepModel step;
-  final bool isFirst;
-  final bool isLast;
-  final Color badgeColor;
+  final Color circleColor;
 
   const _TimelineStepRow({
     required this.step,
-    required this.isFirst,
-    required this.isLast,
-    required this.badgeColor,
+    required this.circleColor,
   });
+
+  String _formatTitle(String title) {
+    if (title.contains('\n')) return title;
+    final words = title.trim().split(RegExp(r'\s+'));
+    if (words.length == 2) {
+      return '${words[0]}\n${words[1]}';
+    } else if (words.length == 3) {
+      return '${words[0]} ${words[1]}\n${words[2]}';
+    } else if (words.length >= 4) {
+      final mid = (words.length / 2).ceil();
+      return '${words.sublist(0, mid).join(' ')}\n${words.sublist(mid).join(' ')}';
+    }
+    return title;
+  }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 96,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Vertical continuous white line passing through center of the dots
-          PositionedDirectional(
-            start: 109,
-            top: isFirst ? 48 : 0,
-            bottom: isLast ? 48 : 0,
-            child: Container(
-              width: 2.5,
-              color: Colors.white,
-            ),
-          ),
-
-          // Content Row
-          Row(
-            children: [
-              // Left (in RTL): Step description text
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    step.title,
-                    textAlign: TextAlign.center,
-                    style: AppFonts.regularCairo.copyWith(
-                      fontSize: 15.5,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      height: 1.4,
-                    ),
+      height: 140,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Row(
+          children: [
+            // Left: Step description text
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  _formatTitle(step.title),
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                  style: AppFonts.regularLemonade.copyWith(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    height: 1.45,
                   ),
                 ),
               ),
+            ),
 
-              // Solid white indicator node on the line
-              Container(
-                width: 20,
-                height: 20,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 3,
-                      offset: Offset(0, 1),
-                    ),
-                  ],
+            // Middle: Solid white circle dot on the line
+            SizedBox(
+              width: 32,
+              child: Center(
+                child: Container(
+                  width: 26,
+                  height: 26,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
                 ),
               ),
+            ),
 
-              const SizedBox(width: 14),
-
-              // Right (in RTL): Solid dark red circular badge
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: badgeColor,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.15),
-                      blurRadius: 6,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(12),
-                child: Image.asset(
-                  step.icon,
-                  fit: BoxFit.contain,
+            // Right: Circular container with image
+            Expanded(
+              child: Center(
+                child: Container(
+                  width: 96,
+                  height: 96,
+                  decoration: BoxDecoration(
+                    color: circleColor,
+                    shape: BoxShape.circle,
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Image.asset(
+                    step.icon,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
-              const SizedBox(width: 16),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _TimelineWavePainter extends CustomPainter {
-  final Color waveColor;
+// ── Organic background curve painter ──────────────────────────
+class _TimelineBackgroundPainter extends CustomPainter {
+  final Color heavyColor;
 
-  _TimelineWavePainter({required this.waveColor});
+  _TimelineBackgroundPainter({required this.heavyColor});
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = waveColor.withValues(alpha: 0.45)
+      ..color = heavyColor
       ..style = PaintingStyle.fill;
 
+    final w = size.width;
+    final h = size.height;
+
     final path = Path();
-    path.moveTo(0, 0);
-    path.lineTo(size.width * 0.55, 0);
-    path.quadraticBezierTo(
-      size.width * 0.40,
-      size.height * 0.22,
-      size.width * 0.20,
-      size.height * 0.45,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.08,
-      size.height * 0.70,
-      0,
-      size.height * 0.90,
-    );
+    // Start at top right
+    path.moveTo(w, 0);
+    // Line across the top to 38% from left
+    path.lineTo(w * 0.38, 0);
+    // Curve down and across to the left edge at y = 150
+    path.quadraticBezierTo(w * 0.12, 45, 0, 150);
+    // Down to bottom left
+    path.lineTo(0, h);
+    // Across to bottom right
+    path.lineTo(w, h);
     path.close();
 
     canvas.drawPath(path, paint);
   }
 
   @override
-  bool shouldRepaint(covariant _TimelineWavePainter oldDelegate) {
-    return oldDelegate.waveColor != waveColor;
+  bool shouldRepaint(covariant _TimelineBackgroundPainter oldDelegate) {
+    return oldDelegate.heavyColor != heavyColor;
   }
 }
