@@ -5,7 +5,7 @@
       "name": "ده عمده",
       "slug": "omda",
       "heroTitle": "عمدة",
-      "heroSubtitle": "ملك الشوكولاتة والكراميل",
+      "heroSubtitle": "لما تحب تحلي وعايز حد يخلص\nالمهمة ديه كلم عمدة بس\nوهو هيخلصهالك",
       "heroPerks": [
         "شوكولاتة فاخرة وغنية",
         "محشو بالكراميل الذائب",
@@ -19,7 +19,7 @@
       "storyText": "محتاج حد تقيل ؟ كلم عمدة",
       "themeColor": "#7B1C1C",
       "backgroundColor": "#A42B20",
-      "waveColor": "#581212",
+      "waveColor": "#891811",
       "cardColor": "#FFFFFF",
       "cardTextColor": "#1A1A1A",
       "footerColor": "#FAF6EF",
@@ -55,14 +55,14 @@
       ],
       "productCards": [
         {
-          "title": "عمدة دبل شوكليت",
-          "subtitle": "ويفر مقرمش مع طبقات شوكولاتة غنية",
-          "image": "assets/images/bako.png"
-        },
-        {
           "title": "عمدة كراميل",
           "subtitle": "محشو بالكراميل الذائب والشوكولاتة الفاخرة",
           "image": "assets/images/omda_card.png"
+        },
+        {
+          "title": "عمدة دبل شوكليت",
+          "subtitle": "ويفر مقرمش مع طبقات شوكولاتة غنية",
+          "image": "assets/images/bako.png"
         },
         {
           "title": "عمدة كلاسيك",
@@ -84,29 +84,29 @@
     },
     {
       "id": "2",
-      "name": "سمسطاوي",
+      "name": "بسكاوي",
       "slug": "beskawy",
-      "heroTitle": "سمسطاوي",
-      "heroSubtitle": "بسكويت سادة بالشوفان",
+      "heroTitle": "بسكاوي",
+      "heroSubtitle": "بسكويت سادة مقرمش يروق البال مع الشاي",
       "heroPerks": [
         "مقرمش وخفيف ولذيذ",
         "غني بالألياف الطبيعية",
         "طاقة تدوم طوال اليوم"
       ],
-      "heroLetters": "س م س ط ا و ي",
+      "heroLetters": "ب س ك ا و ي",
       "characterId": "beskawy",
-      "characterName": "سمسطاوي",
+      "characterName": "بسكاوي",
       "characterImage": "assets/images/beskawy.png",
-      "storyTitle": "حكاية البطل سمسطاوي",
-      "storyText": "سمسطاوي هو الخبير اللي بيعرف سر القرمشة الأصلية وبيختار أحسن المكونات عشان يقدم لكم بسكويت يروق البال.",
-      "themeColor": "#4F8C82",
-      "backgroundColor": "#4F8C82",
-      "waveColor": "#3A6C64",
+      "storyTitle": "حكاية البطل بسكاوي",
+      "storyText": "بسكاوي هو الخبير اللي بيعرف سر القرمشة الأصلية وبيختار أحسن المكونات عشان يقدم لكم بسكويت يروق البال.",
+      "themeColor": "#489186",
+      "backgroundColor": "#88ABA6",
+      "waveColor": "#489186",
       "cardColor": "#FFFFFF",
       "cardTextColor": "#1A1A1A",
       "footerColor": "#FAF6EF",
       "footerTextColor": "#2A2A2A",
-      "timelineTitle": "كيف نصنع سمسطاوي؟",
+      "timelineTitle": "كيف نصنع بسكاوي؟",
       "timelineSubtitle": "من المزرعة لبيتك مباشرة",
       "timelineSteps": [
         {
@@ -137,23 +137,23 @@
       ],
       "productCards": [
         {
-          "title": "سمسطاوي كلاسيك",
+          "title": "بسكاوي كلاسيك",
           "subtitle": "بسكويت سادة بالشوفان مقرمش ولذيذ",
-          "image": "assets/images/product 1.png"
-        },
-        {
-          "title": "سمسطاوي بالحليب",
-          "subtitle": "نكهة الحليب الغنية وقرمشة خفيفة",
           "image": "assets/images/biscuits box.png"
         },
         {
-          "title": "سمسطاوي بالتمر",
+          "title": "بسكاوي مقرمش",
+          "subtitle": "نكهة الشاي الغنية وقرمشة خفيفة",
+          "image": "assets/images/product 1.png"
+        },
+        {
+          "title": "بسكاوي بالتمر",
           "subtitle": "محشو بالتمر الطبيعي الغني بالطاقة",
           "image": "assets/images/bako.png"
         }
       ],
-      "gameTitle": "العب مع سمسطاوي!",
-      "gameSubtitle": "هل يمكنك تخمين نكهتي المفضلة؟",
+      "gameTitle": "العب مع بسكاوي!",
+      "gameSubtitle": "اضغط ابدأ وتعرف على سر قرمشة بسكاوي!",
       "quizOptions": [
         "شاي بالنعناع مع بسكويت",
         "قهوة الصباح المقرمشة",
@@ -168,7 +168,7 @@
       "name": "مستر كوكيز",
       "slug": "cookies",
       "heroTitle": "مستر كوكيز",
-      "heroSubtitle": "كوكيز بقطع الشوكولاتة الذائبة",
+      "heroSubtitle": "كوكيز بقطع الشوكولاتة الذائبة المقرمشة",
       "heroPerks": [
         "طري من الداخل ومقرمش من الخارج",
         "حبيبات شوكولاتة بلجيكية",
@@ -180,9 +180,9 @@
       "characterImage": "assets/images/Cookies.png",
       "storyTitle": "حكاية البطل مستر كوكيز",
       "storyText": "خلي بالك من كوكيز، هو يبان كوكي عادي بس محقق ذكي وسره خطير في وصفتنا السرية اللي ملهاش مثيل.",
-      "themeColor": "#2C1B14",
-      "backgroundColor": "#2C1B14",
-      "waveColor": "#1D110C",
+      "themeColor": "#27160F",
+      "backgroundColor": "#2D1B14",
+      "waveColor": "#27160F",
       "cardColor": "#FFFFFF",
       "cardTextColor": "#1A1A1A",
       "footerColor": "#FAF6EF",
@@ -244,7 +244,7 @@
       "name": "كتاكيتو",
       "slug": "kitkito",
       "heroTitle": "كتاكيتو",
-      "heroSubtitle": "ويفر بالفانيليا والشوكولاتة",
+      "heroSubtitle": "ويفر بالفانيليا والشوكولاتة المقرمش",
       "heroPerks": [
         "هش وخفيف جداً",
         "كريمة فانيليا وشوكولاتة",
@@ -256,13 +256,13 @@
       "characterImage": "assets/images/Kitkito.png",
       "storyTitle": "حكاية البطل كتاكيتو",
       "storyText": "أطيب واحد فينا وقلبه أبيض وهش من جوه، بيفرح أي حد ويحلي أي لحظة بابتسامته وطعمه الخفيف.",
-      "themeColor": "#C99111",
-      "backgroundColor": "#C99111",
-      "waveColor": "#946706",
-      "cardColor": "#2B1C13",
-      "cardTextColor": "#FFFFFF",
-      "footerColor": "#2B1C13",
-      "footerTextColor": "#FFFFFF",
+      "themeColor": "#B0931E",
+      "backgroundColor": "#DCB412",
+      "waveColor": "#B0931E",
+      "cardColor": "#FFFFFF",
+      "cardTextColor": "#1A1A1A",
+      "footerColor": "#FAF6EF",
+      "footerTextColor": "#2A2A2A",
       "timelineTitle": "خطوات الصنع",
       "timelineSubtitle": "سر الخفة والقرمشة الذهبية",
       "timelineSteps": [
@@ -294,14 +294,14 @@
       ],
       "productCards": [
         {
-          "title": "كتاكيتو بالشوكولاتة",
-          "subtitle": "ويفر مقرمش غني بالشوكولاتة الفاخرة",
-          "image": "assets/images/bako.png"
+          "title": "كتاكيتو المقرمش",
+          "subtitle": "ويفر مقرمش مغطى بالشوكولاتة",
+          "image": "assets/images/katakito.png"
         },
         {
           "title": "كتاكيتو فانيليا",
           "subtitle": "كريمة فانيليا ناعمة وطبقات هشة",
-          "image": "assets/images/product 1.png"
+          "image": "assets/images/bako.png"
         },
         {
           "title": "كتاكيتو مكس",
@@ -310,7 +310,7 @@
         }
       ],
       "gameTitle": "العب مع كتاكيتو!",
-      "gameSubtitle": "تحدي الويفر المقرمش!",
+      "gameSubtitle": "تحدي الويفر المقرمش مع كتاكيتو!",
       "interactiveType": "character_intro",
       "weight": "٢٥ جرام",
       "category": "ويفر"
@@ -333,7 +333,7 @@
       "image": "assets/images/Kitkito.png",
       "cardImage": null,
       "description": "انت اكيد سمعت عن كتاكيتو قبل كده ده اطيب فينا واحد وقلبه طيب وهش من جوه",
-      "color": "#C99111"
+      "color": "#DCB412"
     },
     {
       "id": "beskawy",
@@ -342,7 +342,7 @@
       "image": "assets/images/beskawy.png",
       "cardImage": null,
       "description": "ده اكبر واحد فينا وليه احترامه كفايا انه بيعرف يظبط الشاي",
-      "color": "#4F8C82"
+      "color": "#88ABA6"
     },
     {
       "id": "cookies",
@@ -351,7 +351,7 @@
       "image": "assets/images/Cookies.png",
       "cardImage": null,
       "description": "خلي بالك من كوكيز هو يبان كوكي عادي بس هو مش سهل خااالص",
-      "color": "#2C1B14"
+      "color": "#2D1B14"
     }
   ]
 }
