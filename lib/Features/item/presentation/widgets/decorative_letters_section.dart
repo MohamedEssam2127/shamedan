@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shamedan/Features/item/data/item_model.dart';
 import 'package:shamedan/core/utils/Appfonts.dart';
-import 'package:shamedan/core/utils/app_color.dart';
+
 
 class DecorativeLettersSection extends StatelessWidget {
   final ItemModel item;
@@ -34,9 +34,8 @@ class DecorativeLettersSection extends StatelessWidget {
     final rotations = [-0.15, -0.06, 0.12, 0.22, -0.10, 0.18, -0.08];
     final yOffsets = [-2.0, 4.0, -2.0, -5.0, 2.0, -3.0, 3.0];
 
-    final Color letterColor = item.id == '1'
-        ? AppColor.secondaryHeavy
-        : waveColor;
+    final Color letterColor = waveColor;
+
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 8),

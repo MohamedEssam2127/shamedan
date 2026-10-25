@@ -31,9 +31,7 @@ class ItemHeroSection extends StatelessWidget {
                 if (item.heroSubtitle.isNotEmpty) ...[
                   const SizedBox(height: 49),
                   Text(
-                    item.id == '1'
-                        ? "لما تحب تحلي و عايز حد يخلص \n المهمة ديه كلم عمدة بس\n وهو هيخلصهالك "
-                        : item.heroSubtitle,
+                    item.heroSubtitle,
                     style: AppFonts.regularCairo.copyWith(
                       fontSize: 12,
                       color: Colors.white.withValues(alpha: 0.95),
@@ -51,10 +49,11 @@ class ItemHeroSection extends StatelessWidget {
               width: 98,
               height: 146,
               child: Image.asset(
-                item.id == '1' ? 'assets/images/omda_card.png' : item.productCards.first.image,
+                item.productCards.first.image,
                 fit: BoxFit.contain,
               ),
             ),
+
           const SizedBox(width: 14),
         ],
       ),

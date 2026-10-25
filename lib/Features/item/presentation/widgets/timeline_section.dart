@@ -21,15 +21,13 @@ class TimelineSection extends StatelessWidget {
   }
 
   Color _getCircleColor(ItemModel item) {
-    if (item.id == '1') {
-      return AppColor.secondarylight;
-    }
     try {
-      return Color(int.parse(item.themeColor.replaceFirst('#', '0xFF')));
+      return Color(int.parse(item.backgroundColor.replaceFirst('#', '0xFF')));
     } catch (_) {
       return const Color(0xFFA42B20);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -63,7 +63,34 @@ class CharacterStorySection extends StatelessWidget {
           height: 75,
         ),
       ];
+    } else if (item.id == '4') {
+
+      // Kitkito
+      return const [
+        _StoryIngredientConfig(
+          asset: 'assets/images/cocoa.png',
+          top: 18,
+          end: 18,
+          width: 75,
+          height: 75,
+        ),
+        _StoryIngredientConfig(
+          asset: 'assets/images/butter.png',
+          bottom: 20,
+          end: 16,
+          width: 80,
+          height: 90,
+        ),
+        _StoryIngredientConfig(
+          asset: 'assets/images/cacao powder.png',
+          top: 110,
+          start: 16,
+          width: 75,
+          height: 75,
+        ),
+      ];
     }
+
 
     // Default: Omda (Item 1)
     return const [

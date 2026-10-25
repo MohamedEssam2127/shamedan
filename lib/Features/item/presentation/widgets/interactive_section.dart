@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shamedan/Features/item/data/item_model.dart';
 import 'package:shamedan/core/utils/Appfonts.dart';
+import 'package:shamedan/core/utils/app_color.dart';
+import 'package:shamedan/core/widgets/primarybutton.dart';
+
 
 class InteractiveSection extends StatefulWidget {
   final ItemModel item;
@@ -103,49 +106,19 @@ class _InteractiveSectionState extends State<InteractiveSection> {
           final isSelected = _selectedQuizOption == option;
           return Padding(
             padding: const EdgeInsets.only(bottom: 12),
-            child: SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() => _selectedQuizOption = option);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isSelected
-                      ? const Color(0xFFFEE500)
-                      : Colors.white,
-                  foregroundColor: const Color(0xFF2A2A2A),
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (isSelected) ...[
-                      const Icon(
-                        Icons.check_circle_rounded,
-                        color: Color(0xFF7B1C1C),
-                        size: 20,
-                      ),
-                      const SizedBox(width: 8),
-                    ],
-                    Text(
-                      option,
-                      style: AppFonts.regularCairo.copyWith(
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            child: PrimaryButton(
+              text: option,
+              isSelected: isSelected,
+              width: 180,
+              height: 42,
+              onPressed: () {
+                setState(() => _selectedQuizOption = option);
+              },
             ),
           );
         }),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
 
         // Character standing
         Image.asset(
@@ -156,6 +129,7 @@ class _InteractiveSectionState extends State<InteractiveSection> {
       ],
     );
   }
+
 
   // Cookie Grid
   Widget _buildCookieGrid(ItemModel item) {
@@ -228,9 +202,12 @@ class _InteractiveSectionState extends State<InteractiveSection> {
           height: 200,
           fit: BoxFit.contain,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
 
-        ElevatedButton(
+        PrimaryButton(
+          text: 'ابدأ!',
+          width: 140,
+          height: 42,
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -239,29 +216,14 @@ class _InteractiveSectionState extends State<InteractiveSection> {
                   textAlign: TextAlign.center,
                   style: AppFonts.regularCairo,
                 ),
-                backgroundColor: Colors.white,
+                backgroundColor: AppColor.backgroundBlack,
                 behavior: SnackBarBehavior.floating,
               ),
             );
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: item.cardColor == '#FFFFFF'
-                ? Colors.white
-                : const Color(0xFF2B1C13),
-            foregroundColor: item.cardColor == '#FFFFFF'
-                ? const Color(0xFF2A2A2A)
-                : Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
-            ),
-          ),
-          child: Text(
-            'ابدأ!',
-            style: AppFonts.titleLalezar.copyWith(fontSize: 16),
-          ),
         ),
       ],
     );
   }
+
 }
